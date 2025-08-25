@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageCompressorController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ImageCompressorController::class, 'showForm']);
 
 Route::middleware([
     'auth:sanctum',
@@ -15,3 +14,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// Public image compressor
+Route::get('/compressor', [ImageCompressorController::class, 'showForm'])->name('compressor.form');
+Route::post('/compressor', [ImageCompressorController::class, 'compressWeb'])->name('compressor.compress');

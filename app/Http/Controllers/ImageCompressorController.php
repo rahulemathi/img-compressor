@@ -22,7 +22,13 @@ class ImageCompressorController extends Controller
     public function compressWeb(Request $request): StreamedResponse
     {
         $validated = $request->validate([
-            'image' => ['required', 'file', 'max:10240', 'mimetypes:image/png,image/webp,image/jpeg'],
+            'image' => [
+                'required',
+                'file',
+                'max:10240',
+                // Support common formats: png, webp, jpeg/jpg, heic, heif, avif, dng, tiff
+                'mimes:png,webp,jpeg,jpg,heic,heif,avif,dng,tif,tiff'
+            ],
             'quality' => ['nullable', 'integer', 'min:1', 'max:100'],
         ]);
 
@@ -47,7 +53,12 @@ class ImageCompressorController extends Controller
     public function compressApi(Request $request)
     {
         $request->validate([
-            'image' => ['required', 'file', 'max:10240', 'mimetypes:image/png,image/webp,image/jpeg'],
+            'image' => [
+                'required',
+                'file',
+                'max:10240',
+                'mimes:png,webp,jpeg,jpg,heic,heif,avif,dng,tif,tiff'
+            ],
             'quality' => ['nullable', 'integer', 'min:1', 'max:100'],
         ]);
 

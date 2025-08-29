@@ -2,6 +2,9 @@
 
 A simple image compression service with a guest-facing UI and token-protected API.
 
+### Preview
+![App Screenshot](screenhot.png)
+
 ### Features
 - Guest UI at `/` with drag-and-drop upload
 - Lossless PNG optimization; JPEG/JPG/WebP recompress with adjustable quality

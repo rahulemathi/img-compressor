@@ -44,6 +44,23 @@ class ImageCompressionService
                 $data = $this->recompressWebp($file->getPathname(), $quality);
                 $mime = 'image/webp';
                 break;
+            case 'heic':
+            case 'heif':
+            case 'avif':
+            case 'dng':
+            case 'tif':
+            case 'tiff':
+                // Currently passthrough for these formats (no server-side encoder available here)
+                $data = file_get_contents($file->getPathname());
+                // Normalize MIME when missing/unknown
+                $mime = match ($extension) {
+                    'heic', 'heif' => 'image/heic',
+                    'avif' => 'image/avif',
+                    'dng' => 'image/x-adobe-dng',
+                    'tif', 'tiff' => 'image/tiff',
+                    default => $mime,
+                };
+                break;
             default:
                 // Passthrough for other formats
                 $data = file_get_contents($file->getPathname());

@@ -3,7 +3,7 @@
 A simple image compression service with a guest-facing UI and token-protected API.
 
 ### Preview
-![App Screenshot](screenhot.png)
+![App Screenshot](https://github.com/rahulemathi/img-compressor/blob/main/Screenshot.png?raw=true)
 
 ### Features
 - Guest UI at `/` with drag-and-drop upload
